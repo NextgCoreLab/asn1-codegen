@@ -32,13 +32,38 @@ impl Wire {
 
 /// (output label, schema file, codec, consumers)
 const TARGETS: &[(&str, &str, Wire, &str)] = &[
-    ("ngap", "ngap-17.9.asn", Wire::Aper, "nextgcore-ngap-gen, nextgsim-ngap"),
-    ("s1ap", "s1ap-19.2.0.asn", Wire::Aper, "nextgcore-s1ap-gen, nextgsim-s1ap"),
-    ("nrppa-nextgsim", "nrppa-19.2.0.nextgsim.asn1", Wire::Aper, "nextgsim-ngap"),
-    ("nrppa-nextgcore", "nrppa-19.2.0.nextgcore.asn", Wire::Aper, "nextgcore-nrppa-gen"),
+    (
+        "ngap",
+        "ngap-17.9.asn",
+        Wire::Aper,
+        "nextgcore-ngap-gen, nextgsim-ngap",
+    ),
+    (
+        "s1ap",
+        "s1ap-19.2.0.asn",
+        Wire::Aper,
+        "nextgcore-s1ap-gen, nextgsim-s1ap",
+    ),
+    (
+        "nrppa-nextgsim",
+        "nrppa-19.2.0.nextgsim.asn1",
+        Wire::Aper,
+        "nextgsim-ngap",
+    ),
+    (
+        "nrppa-nextgcore",
+        "nrppa-19.2.0.nextgcore.asn",
+        Wire::Aper,
+        "nextgcore-nrppa-gen",
+    ),
     ("lpp", "lpp-19.3.0.asn", Wire::Uper, "nextgcore-lpp-gen"),
     ("nr-rrc", "rrc-19.3.0.asn1", Wire::Uper, "nextgsim-rrc"),
-    ("lte-rrc", "lte-rrc-19.4.0.asn", Wire::Uper, "nextgsim-lte-rrc"),
+    (
+        "lte-rrc",
+        "lte-rrc-19.4.0.asn",
+        Wire::Uper,
+        "nextgsim-lte-rrc",
+    ),
 ];
 
 fn crate_dir() -> PathBuf {
@@ -117,7 +142,9 @@ fn generated_code_matches_the_golden_hashes() {
     }
     for name in golden.keys() {
         if !actual.contains_key(name) {
-            drift.push(format!("{name}: in golden/SHA256SUMS but no longer generated"));
+            drift.push(format!(
+                "{name}: in golden/SHA256SUMS but no longer generated"
+            ));
         }
     }
     assert!(

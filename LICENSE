@@ -1,0 +1,10 @@
+Copyright (c) 2021 Hampi Contributors
+Modifications copyright (c) 2026 NextgCoreLab contributors
+
+This code is dual licensed as MIT and Apache-2.0, at your option.
+See LICENSE-MIT and LICENSE-Apache2.
+
+asn1-codegen is a fork of the hampi project's asn1-compiler, asn1-codecs and
+asn1_codecs_derive crates, version 0.7.2 (https://github.com/gabhijit/hampi).
+The original copyright notices and license files are preserved in each crate
+directory and must be kept with any redistribution.
