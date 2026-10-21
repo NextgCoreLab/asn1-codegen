@@ -1,0 +1,9 @@
+# SHA-256 of the UNFORMATTED generator output for each pinned schema.
+# Regenerate with: UPDATE_GOLDEN=1 cargo test -p codegen-golden
+8ae271848bd4acf5d2ed9f1df1159451d4a0af2e7f7d19132f0b2a47df653127  lpp.rs
+a469729e3e071913cb57370fdea3d15d941ddcdc10ae14ce4cbb2c239f9f9919  lte-rrc.rs
+bb4a207f109350ccc870764679ee499e2abdab642f1e647a23b0fdda8abe3526  ngap.rs
+67f44449dafacdca0b31096bebc3e0f89165a7cbd1f311c338b3df097dcaa300  nr-rrc.rs
+ab829606a42d3b391cda1604ba4c76e7b092de744356d07b44c295fb1a1fbabe  nrppa-nextgcore.rs
+ab829606a42d3b391cda1604ba4c76e7b092de744356d07b44c295fb1a1fbabe  nrppa-nextgsim.rs
+f08368a1a30a85514e3025e5d1acd50d21930d31b33d23f7ef76f55e4fcaf79c  s1ap.rs

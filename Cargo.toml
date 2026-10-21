@@ -1,0 +1,22 @@
+# asn1-codegen: the ASN.1-to-Rust compiler and PER codecs used by NextgCoreLab's
+# nextgcore (core network) and nextgsim (RAN/UE simulator).
+#
+# The three member crates keep the names AND the version (0.7.2) of the hampi
+# crates they fork, so a consumer switches by changing only the dependency
+# source. Keeping 0.7.2 matters: asn1_codecs_derive pins `asn1-codecs = "=0.7.2"`,
+# and consumers route that requirement to this repo with [patch.crates-io].
+[workspace]
+resolver = "2"
+members = [
+    "asn1-compiler",
+    "asn1-codecs",
+    "asn1_codecs_derive",
+    "codegen-golden",
+]
+
+# asn1_codecs_derive's manifest (the crates.io-normalised form, kept verbatim
+# from the vendored copy) depends on the REGISTRY `asn1-codecs =0.7.2`. Route it
+# to the member here so the workspace holds exactly one asn1-codecs -- the
+# derive macro must emit calls against the same codec it is tested with.
+[patch.crates-io]
+asn1-codecs = { path = "asn1-codecs" }

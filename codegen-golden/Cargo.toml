@@ -1,0 +1,13 @@
+[package]
+name = "codegen-golden"
+version = "0.0.0"
+edition = "2021"
+publish = false
+description = "Pins the generated code for every 3GPP schema nextgcore and nextgsim compile, so any codegen change is visible."
+license = "Apache-2.0 OR MIT"
+
+[dependencies]
+
+[dev-dependencies]
+asn1-compiler = { path = "../asn1-compiler" }
+sha2 = "0.10"
