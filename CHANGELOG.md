@@ -4,6 +4,14 @@ All three crates keep hampi's version number (0.7.2) so consumers can route
 `asn1-codecs = "=0.7.2"` requirements here with `[patch.crates-io]`. Releases of
 this repository are tagged `vX.Y.Z` independently of that crate version.
 
+## Unreleased
+
+- `asn1-codecs` no longer enables `log/release_max_level_info`. Through cargo
+  feature unification it capped `log` at `Info` for every crate in a
+  consumer's release build, so their `debug!`/`trace!` were compiled out and
+  `RUST_LOG=...=debug` did nothing (nextgcore#1433). The codec's own
+  `debug!`/`trace!` are now filtered at run time like everyone else's.
+
 ## v0.1.0 -- extraction from nextgsim
 
 First standalone release. Content is byte-for-byte the compiler nextgsim
