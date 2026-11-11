@@ -30,3 +30,15 @@ pub use per::common::decode::decode_sequence_extension_additions_bitmap;
 
 #[doc(hidden)]
 pub use per::common::encode::encode_sequence_extension_additions_bitmap;
+
+// A library must not cap `log`'s compile-time level (nextgcore#1433).
+// `release_max_level_*` on this crate's `log` dependency is unified into every
+// consumer's build and compiles their `debug!`/`trace!` out of release builds.
+// CI runs the tests with `--release`, which is where a cap would show.
+#[cfg(test)]
+mod log_level_tests {
+    #[test]
+    fn log_static_max_level_is_not_capped() {
+        assert_eq!(log::STATIC_MAX_LEVEL, log::LevelFilter::Trace);
+    }
+}

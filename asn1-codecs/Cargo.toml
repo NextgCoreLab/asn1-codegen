@@ -50,9 +50,13 @@ path = "src/lib.rs"
 [dependencies.bitvec]
 version = "1.0"
 
+# No `release_max_level_*` feature: cargo unifies features, so a library that
+# sets one caps `log`'s static level for every crate in the consumer's build
+# and compiles their debug!/trace! out of release builds, where RUST_LOG
+# cannot bring them back (nextgcore#1433). The `log` docs say libraries
+# should avoid the max level features; a binary that wants the cap sets it.
 [dependencies.log]
 version = "0.4"
-features = ["release_max_level_info"]
 
 [dependencies.proc-macro2]
 version = "1.0"
